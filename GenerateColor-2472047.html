@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>Generate Color-2472047</title>
+<head>
+<style>
+    div {
+        width: 150px;
+        height: 150px ;
+        border: 1px solid black;
+        background-color:  white;
+    }
+    #Generate{
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+    }
+</style>
+<body id="body">
+    <div id="Generate">
+        <h4>Color Generate</h4>
+        <button onclick="ganti()">Generate</button>
+        <p id="texs"></p>
+
+    </div>
+    <script>
+        let rgb = document.getElementById("texs");
+        let kotak = document.getElementById("body");
+        function ganti() {
+            let a = Math.floor(Math.random() * 255); // 0-2
+            let warna;
+            let r,g,b;
+            r=a;
+            g=a;
+            b=a;
+            warna = "rgb("+r+","+g+","+b+")";
+            rgb.innerHTML =warna;
+            kotak.style.backgroundColor = warna;
+        }
+    </script>   
+</body>
