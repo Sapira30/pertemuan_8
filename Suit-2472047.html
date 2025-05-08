@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Suit Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: tan;
+      text-align: center;
+      padding-top: 50px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Suit Game</h1>
+  <p>Masukkan angka antara 1 sampai 9:</p>
+  <input type="number" id="playerInput" min="1" max="9">
+  <br><br>
+  <button onclick="playGame()">Mainkan</button>
+
+  <div class="result" id="resultDisplay"></div>
+
+  <script>
+    function playGame() {
+      const player = parseInt(document.getElementById("playerInput").value);
+      const computer = Math.floor(Math.random() * 9) + 1;
+
+      if (player < 1 || player > 9 || isNaN(player)) {
+        alert("Angka harus dari 1 sampai 9!");
+        return;
+      }
+
+      let result = `Kamu memilih: ${player} <br> Komputer memilih: ${computer} <br>`;
+
+      if (player > computer) {
+        result += "<span style='color: blue;'>Kamu Menang!</span>";
+      } else if (player < computer) {
+        result += "<span style='color: red;'>Kamu Kalah!</span>";
+      } else {
+        result += "<span style='color: firebrick;'>Draw!</span>";
+      }
+
+      document.getElementById("resultDisplay").innerHTML = result;
+    }
+  </script>
+</body>
+</html>

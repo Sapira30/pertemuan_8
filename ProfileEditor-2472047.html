@@ -1,11 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,0">
-    <title>Profile Card Editor-247047</title> 
 <head>
-</html>  
-</head>
-<style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile Editor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+    }
 
-</style>
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .form-group {
+      margin: 15px 0;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    .button-group {
+      margin-top: 20px;
+    }
+
+    .button-group button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border: none;
+      color: white;
+      background-color: #4CAF50;
+      cursor: pointer;
+      display: block;
+      margin-top: 8px;
+    }
+
+    .button-group button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Profile Card Editor</h1>
+
+    <div class="card" id="profileCard">
+      <img src="default.jpg" alt="Profile Picture" id="profileImage"/>
+      <h2 id="profileName">John Doe</h2>
+      <p id="profileBio">Web Developer</p>
+    </div>
+
+    <div class="form">
+      <div class="form-group">
+        <input type="text" id="nameInput" placeholder="Enter new name">
+      </div>
+      <div class="form-group">
+        <input type="text" id="bioInput" placeholder="Enter new bio">
+      </div>
+      <div class="form-group">
+        <input type="text" id="imgInput" placeholder="Enter image URL">
+      </div>
+
+      <div class="button-group">
+        <button type="button" id="updateBtn">Update Profile</button>
+        <button type="button" id="resetBtn">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const defaultData = {
+        name: "John Doe",
+        bio: "Web Developer",
+        img: "default,jpg"
+      };
+
+      const nameEl = document.getElementById('profileName');
+      const bioEl = document.getElementById('profileBio');
+      const imgEl = document.getElementById('profileImage');
+
+      const nameInput = document.getElementById('nameInput');
+      const bioInput = document.getElementById('bioInput');
+      const imgInput = document.getElementById('imgInput');
+
+      document.getElementById('updateBtn').addEventListener('click', function () {
+        if (nameInput.value) nameEl.textContent = nameInput.value;
+        if (bioInput.value) bioEl.textContent = bioInput.value;
+        if (imgInput.value) imgEl.src = imgInput.value;
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', function () {
+        nameEl.textContent = defaultData.name;
+        bioEl.textContent = defaultData.bio;
+        imgEl.src = defaultData.img;
+        nameInput.value = '';
+        bioInput.value = '';
+        imgInput.value = '';
+      });
+    });
+  </script>
+</body>
+</html>
